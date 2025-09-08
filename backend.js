@@ -25,28 +25,32 @@ mongoose.connect('mongodb://127.0.0.1:27017/testdb', {
 // Schema principal
 const database_aps = new mongoose.Schema ({
     func: String,
-    data: String,    
+    data: String,
+    desc: String   
 });
 
 // Usando nosso schema para table Search
 const search_table = mongoose.model('Search', database_aps);
 
 
-// Isso é só teste
-app.get('/',(req, res) => {
-    res.send("Hello, World!")
-});
-
 app.post('/addfunc', async (req, res) => {
+    const { func, data, desc } = req.body;
     try {
 
-        const func = await
+        const novaFunc = new search_table({func, data, desc})
+        await novaFunc.save();
+        res.send("Função Adicionada.")
     }
         catch (error) {
             console.log("Erro ao salvar a função");
         }   
 })
 
+
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
+});
 
 // Request para o search 
 app.get('/funcs', async (req, res) => {

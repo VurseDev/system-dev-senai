@@ -1,4 +1,8 @@
-<body>
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="docs.js"></script>
     <header>
         <a href="/">JavaScript Docs</a>
     </header>
@@ -32,7 +36,7 @@
         <dt><a href="/tutorials.html">Tutoriais</a></dt>
         <dd>Como adicionar a docs em seu site</dd>
 
-        <dt><a href ="/package.html">Packages</a></dt>
+        <dt><a href="/package.html">Packages</a></dt>
         <dd>Como demonstrar packages em sua documentação</dd>
 
         <dt><a href="/readme.html">README</a></dt>
@@ -42,5 +46,19 @@
         <dd>Licensa JSDocs</dd>
 
     </dl>
-<button onclick="abrirForm()">Adicionar Doc</button>
+
+<div id="listaFuncs"></div>
+<button onclick="abrirForm()">Adicionar Função</button>
+<button onclick="verProds()">Ver Histórico de Edições</button>
+
+    <div id="modal" style="display: none;">
+    <h3>Formulário Teste</h3>
+    <input type="text" id="nomeProduto" placeholder="Nome da Função"><br>
+    <input type="text" id="descProduto" placeholder="Descrição da Função"><br>
+    <input type="date" id="dataProduto"><br>
+    <button onclick="closeForm()">Cancelar</button>
+    <button onclick="submitForm()">Cadastrar Produto</button>
+</div>
+
 </body>
+</html>
